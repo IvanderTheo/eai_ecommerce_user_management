@@ -29,10 +29,11 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .anyRequest().permitAll() // SEMUA dipukul rata boleh masuk
-            );
-            // Hapus atau comment baris .addFilterBefore(...)
-            
+                .requestMatchers("/auth/**").permitAll() // auth bebas
+                .anyRequest().authenticated() // lainnya wajib login
+            )
+            .addFilterBefore(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
 
