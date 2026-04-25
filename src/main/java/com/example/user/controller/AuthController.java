@@ -24,6 +24,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest request) {
+        System.out.println("LOGIN ENDPOINT HIT");
         return authService.login(request.getUsername(), request.getPassword());
     }
 }
