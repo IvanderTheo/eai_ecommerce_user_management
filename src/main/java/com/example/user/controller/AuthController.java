@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import com.example.user.dto.AuthRequest;
 import com.example.user.dto.AuthResponse;
 import com.example.user.service.AuthService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/auth")
